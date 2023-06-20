@@ -19,12 +19,11 @@ from pymongo import MongoClient
 client = MongoClient(MONGO_CONN_STRING)
 db = client["wild-plants"]
 wild_plants_collection = db["wild-plants-collection"]
-app.config["all_notes"] = wild_plants_collection.find()
 
 
 # BLUEPRINTS
-from new_note_blueprint.new_note_blueprint import new_note_blueprint
-from all_notes_blueprint.all_notes_blueprint import all_notes_blueprint
+from flasky.new_note_blueprint.new_note_blueprint import new_note_blueprint
+from flasky.all_notes_blueprint.all_notes_blueprint import all_notes_blueprint
 app.register_blueprint(new_note_blueprint, url_prefix="/")
 app.register_blueprint(all_notes_blueprint, url_prefix="/review")
 
@@ -34,4 +33,6 @@ def index():
     return render_template("base.html")
 
 
-app.run(host="0.0.0.0", port=31337, debug=True)
+# app.run(host="0.0.0.0", port=31337, debug=True)
+def create_app():
+    return app

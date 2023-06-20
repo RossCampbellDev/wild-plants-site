@@ -1,2 +1,4 @@
 /.env
-/flasky/venv
+/flasky/venv/
+/flasky/venv_old/
+/venv/
