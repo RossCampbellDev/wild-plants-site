@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block mainbody %}
+    <section>
+        {{ data }}
+        <form method="post" action="/submit-new">
+            <div class="section-control" onClick="minimise(this)">[-]</div>
+            <div class="big-block">
+                <div class="block-title">New Note</div>
+            </div>
+            <div>
+                <!-- title -->
+                <div id="title-input" class="new-note-inputs">
+                    <label class="label-text" for="title-input-text">Title:</label><br/>
+                    <input type="text" name="title-input-text" placeholder="title text" />
+                </div>
+
+                <!-- date -->
+                <div id="date-input" class="new-note-inputs">
+                    <label class="label-text" for="date-input-text">Date:</label><br/>
+                    <input type="date" id="date-input-text" name="date-input-text" value="{{datenow}}" />
+                </div>
+
+                <!-- location - paste from maps? -->
+                <div id="loc-input" class="new-note-inputs">
+                    <label class="label-text" for="location-input-text">Location:</label><br/>
+                    <input type="text" name="location-input-text" placeholder="google?" />
+                </div>
+
+                <!-- text notes -->
+                <div id="notes-input" class="new-note-inputs">
+                    <label class="label-text" for="notes-input-text">Notes:</label><br/>
+                    <textarea name="notes-input-text" cols="90" rows="7"></textarea>
+                </div>
+
+                <!-- tags -->
+                <div id="tags-input" class="new-note-inputs">
+                    + Add Tag
+                </div>
+
+                <!-- upload a pic -->
+
+                <input type="submit" name="save-note" value="Save" />
+            </div>
+        </form>
+    </section>
+{% endblock %}

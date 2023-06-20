@@ -1,0 +1,8 @@
+<div class="note-box" 
+    style="background-image: url('{{
+         url_for('static', filename="/images/thumbnails/"+note.thumb) 
+        }}');">
+    <div class="note-title">{{note.title}}</div>
+    <div class="note-date">{{note.date}}</div>
+    <div class="note-desc"><div class="note-desc-text">{{note.description}}</div></div>
+</div>

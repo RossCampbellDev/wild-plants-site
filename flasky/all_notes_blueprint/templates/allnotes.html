@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block mainbody %}
+    <section>
+        <div class="section-control" onClick="minimise(this)">[-]</div>
+        <div class="big-block">
+            <!--<div class="block-title">All Existing Notes</div>-->
+            <div class="notes-grid">
+                {% for note in all_notes %}
+                    {% set note=note %}
+                    {% include 'note.html' %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

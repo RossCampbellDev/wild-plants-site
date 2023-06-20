@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plants</title>
+    <link rel="stylesheet" href="../static/css/basic_style.css">
+    <script src="../static/javascript/interactive.js"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Playfair:wght@300;400&display=swap');</style>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <!-- <img src="{{ url_for('static', filename='images/logo-small.png') }}" class="logo" /> -->
+    <header>Wild Plants!</header>
+
+    <nav>
+        <a href="{{ url_for('new_note_blueprint.default') }}" class="nav-button">New Note 🆕</a>
+        <a href="{{ url_for('all_notes_blueprint.default') }}" class="nav-button">View All 🎦</a>
+    </nav>
+
+    <main>
+        {% block mainbody%}{% endblock %}
+    </main>
+</body>
+</html>
