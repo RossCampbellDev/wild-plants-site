@@ -1,8 +1,9 @@
 # tasks
 ## mongodb
-- conn string -> env vars
-- flask app connect to db
-- read notes into python
+- conn string -> env vars ✅
+- flask app connect to db ✅
+- read notes into python ✅
+- model/view/controller stuff!?
 
 ## review all
 - read from json array ✅
@@ -18,6 +19,10 @@
 - photo upload 
 - create thumbnail image with square ratio
 - save to mongodb
+
+## edit note
+- change any field value
+- delete
 
 ## user system
 - user login

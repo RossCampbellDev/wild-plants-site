@@ -9,8 +9,17 @@ load_dotenv()
 
 
 # LOAD ENV VARS
-app.secret_key = os.environ.get('SECRET_KEY')
-DB_URL = os.environ.get('DB_URL')
+# app.secret_key = os.environ.get('SECRET_KEY')
+MONGO_CONN_STRING = os.environ.get('MONGO_CONN_STRING')
+
+
+# MONGO
+import pymongo
+from pymongo import MongoClient
+client = MongoClient(MONGO_CONN_STRING)
+db = client["wild-plants"]
+wild_plants_collection = db["wild-plants-collection"]
+app.config["all_notes"] = wild_plants_collection.find()
 
 
 # BLUEPRINTS
