@@ -13,7 +13,7 @@ load_dotenv()
 MONGO_CONN_STRING = os.environ.get('MONGO_CONN_STRING')
 
 
-# MONGO
+# MONGO 
 import pymongo
 from pymongo import MongoClient
 client = MongoClient(MONGO_CONN_STRING)
