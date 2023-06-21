@@ -1,24 +1,5 @@
-# FLASK
 from flask import Flask, Blueprint, render_template, url_for
 app = Flask(__name__)
-
-
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-
-# LOAD ENV VARS
-# app.secret_key = os.environ.get('SECRET_KEY')
-MONGO_CONN_STRING = os.environ.get('MONGO_CONN_STRING')
-
-
-# MONGO 
-import pymongo
-from pymongo import MongoClient
-client = MongoClient(MONGO_CONN_STRING)
-db = client["wild-plants"]
-wild_plants_collection = db["wild-plants-collection"]
 
 
 # BLUEPRINTS
@@ -33,6 +14,5 @@ def index():
     return render_template("base.html")
 
 
-# app.run(host="0.0.0.0", port=31337, debug=True)
 def create_app():
     return app

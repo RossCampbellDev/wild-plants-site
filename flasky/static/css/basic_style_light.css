@@ -24,6 +24,7 @@ header, footer {
 
 h3 {
     font-size: 26pt; font-weight: bold;
+    color: rgb(95, 206, 95); line-height: 1;
 }
 
 textarea {
@@ -207,17 +208,21 @@ input {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    background-color: rgba(20, 20, 20, 0.9);
+    padding: 12px;
 }
 
 .review-note-text {
     width: 600px; height: auto; min-height: 30px;
-    font-size: 20pt; text-align: left;
+    font-size: 18pt; text-align: left;
     color: #FFF;
     margin-bottom: 40px;
+    padding: 12px;
 }
 .review-note-text-small {
     width: 400px; height: auto; min-height: 30px;
     font-size: 12pt; text-align: left;
     color: #FFF;
     margin-bottom: 20px;
+    padding: 12px;
 }

@@ -10,7 +10,7 @@ function minimise(who) {
 }
 
 function addTag() {
-    var tagTextInput = document.getElementById("tags-input-form");
+    var tagTextInput = document.getElementById("popup-input-form");
     tagTextInput.style.display = "block";
 }
 
@@ -30,7 +30,7 @@ function completeAddTag() {
 
         tagTextNew.value = "";
 
-        const tagTextInput = document.getElementById("tags-input-form");
+        const tagTextInput = document.getElementById("popup-input-form");
         tagTextInput.style.display = "none";
     } else {
         alert("Only numbers and letters please!");
@@ -41,7 +41,7 @@ function completeAddTag() {
 function cancelAddTag() {
     const tagTextNew = document.getElementById("new-tag-input");
     tagTextNew.value = "";
-    const tagTextInput = document.getElementById("tags-input-form");
+    const tagTextInput = document.getElementById("popup-input-form");
     tagTextInput.style.display = "none";
 }
 

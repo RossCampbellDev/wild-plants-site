@@ -3,15 +3,15 @@
 - conn string -> env vars ✅
 - flask app connect to db ✅
 - read notes into python ✅
-- model/view/controller stuff!?
+- model/view stuff!? [mongo alternative]
 
 ## review all
 - read from json array ✅
 - display in nice grid ✅
 - get thumb image to show ✅
 - fix grid so it's more evenly distributed ✅
-### - view note?
-- click on an existing note and see the full description and details?
+### - view note overlay
+- click on an existing note and see the full description and details? ✅
 
 ## new note
 - date picker ✅
