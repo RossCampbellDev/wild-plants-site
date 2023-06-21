@@ -18,7 +18,11 @@
             <h3 id="popup-input-title"> </h3>
             <div class="review-note-text" id="review-note-text">    </div>
             <div class="review-note-text-small" id="review-note-tags">  </div>
-            <button class="small-button" type="button" onclick="closeNote()">OK</button>
+            <form method="post" action="/review/editnote" id="note-form">
+                <button class="small-button" type="button" onclick="closeNote()">OK</button>
+                <button class="small-button" >Edit</button>
+                <input type="hidden" name="note-to-edit" id="note-to-edit" value="" />
+            </form>
         </div>
     </div>
 {% endblock %}

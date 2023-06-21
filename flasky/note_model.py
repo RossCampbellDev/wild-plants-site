@@ -1,6 +1,7 @@
 import datetime
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
+from bson.objectid import ObjectId
 
 import os
 from dotenv import load_dotenv
@@ -12,7 +13,7 @@ db = client["wild-plants"]
 wild_plants_collection = db["wild-plants-collection"]
 
 class Note:
-    def __init__(self, title, notes, location, tags, date=datetime.datetime.now().strftime("%Y-%m-%d"), picture="placeholder.jpg"):
+    def __init__(self, title, notes, location, date=datetime.datetime.now().strftime("%Y-%m-%d"), picture="placeholder.jpg", tags=[]):
         self.title = title
         self.date = date
         self.notes = notes
@@ -45,6 +46,10 @@ class Note:
     @staticmethod
     def get_all():
         return list(wild_plants_collection.find())
+    
+    @staticmethod
+    def get_by_id(id):
+        return wild_plants_collection.find_one({'_id': ObjectId(id)})
 
     @staticmethod
     def get_by_title(title):
@@ -68,7 +73,7 @@ class Note:
             'picture': self.picture,
             'thumb': self.picture   # TODO: sort
         }
-        return wild_plants_collection.update_one({'_id': self._id}, {'$set': note_data})
+        return wild_plants_collection.update_one({'_id': ObjectId(self._id)}, {'$set': note_data})
 
     def delete(self):
         return wild_plants_collection.delete_one({'_id': self._id})

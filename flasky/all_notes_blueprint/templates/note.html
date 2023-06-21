@@ -1,9 +1,10 @@
 <div class="note-box"
     id="{{note._id}}"
     style="background-image: url('{{
-        url_for('static', filename="/images/thumbnails/" + note.thumb) 
+        url_for('static', filename="images/thumbnails/" + note.thumb) 
         }}');"
-    onclick="showNote('{{note.title}}', '{{note.date}}', '{{note.notes}}', '{{note.tags}}')">
+    onclick="showNote('{{note._id}}')">
+    <!-- , '{{note.title}}', '{{note.date}}', '{{note.notes}}', JSON.stringify({{note.tags}}) -->
     <div class="note-title">{{note.title}}</div>
     <div class="note-date">{{note.date}}</div>
     <div class="note-desc"><div class="note-desc-text">{{note.notes}}</div></div>

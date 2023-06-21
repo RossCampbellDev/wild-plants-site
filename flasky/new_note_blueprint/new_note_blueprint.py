@@ -20,6 +20,7 @@ def new_note():
     location = data.get("location-input-text")
     notes = data.get("notes-input-text")
     picture = data.get("picture-input-text")
+    # TODO: thumb
     tags = [t.lstrip() for t in data.get("tags-input-text").split(" ")]
 
     new_note = Note(

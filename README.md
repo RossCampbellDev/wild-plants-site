@@ -3,7 +3,8 @@
 - conn string -> env vars ✅
 - flask app connect to db ✅
 - read notes into python ✅
-- model/view stuff!? [mongo alternative]
+- model/view stuff!? [mongo alternative] ✅
+- input validation/sanitisation
 
 ## review all
 - read from json array ✅
@@ -22,7 +23,7 @@
 - save to mongodb ✅
 
 ## edit note
-- change any field value
+- change any field value ✅
 - delete
 
 ## user system

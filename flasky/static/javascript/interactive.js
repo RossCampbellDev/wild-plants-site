@@ -45,18 +45,19 @@ function cancelAddTag() {
     tagTextInput.style.display = "none";
 }
 
-function showNote(title,date,desc,tags) {
-    const f = document.getElementById("popup-input-form");
-    const t = document.getElementById("popup-input-title");
-    const txt = document.getElementById("review-note-text");
-    const tgs = document.getElementById("review-note-tags");
-    f.style.display = 'block';
-    t.innerHTML = title + "<br/>" + date;
-    txt.innerHTML = desc;
-    tgs.innerHTML = tags;
+function showNote(id) {
+    const frm = document.getElementById("note-form");
+    const id_to_edit = document.getElementById("note-to-edit");
+    id_to_edit.value = id;
+    frm.submit();
 }
 
 function closeNote() {
     const f = document.getElementById("popup-input-form");
     f.style.display = 'none';
+}
+
+function editNote() {
+    const frm = document.getElementById("popup-form");
+    frm.submit();
 }
