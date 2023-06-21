@@ -16,9 +16,10 @@
 ## new note
 - date picker ✅
 - form submit ✅
+- save array from tags ✅
 - photo upload 
 - create thumbnail image with square ratio
-- save to mongodb
+- save to mongodb ✅
 
 ## edit note
 - change any field value

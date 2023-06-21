@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block mainbody %}
     <section>
-        {{ new_note }}
+        {% if new_note._id != None %}
+            <header>Successfully added a new note!</header>
+            {{ new_note }}
+        {% else %}
+            <header>Error, failed to insert</header>
+        {% endif %}
     </section>
 {% endblock %}
