@@ -20,11 +20,18 @@
 - save array from tags ✅
 - save to mongodb ✅
 - photo upload ✅
-    - create thumbnail image with square ratio
+    - create thumbnail image with square ratio ✅
+- error handling for picture file uploads
+- better handle 'success' eg nicer transition after new note created
+- make it PRETTIER
 
 ## edit note
 - change any field value ✅
 - delete ✅
+- confirmation for deletion
+- remove image when deleting! (notemodel)
+- remove attached image?
+- see existing image on this screen
 
 ## user system
 - user login
@@ -36,4 +43,5 @@
 ## search system
 - tags
 - search by location??
-- filter(s) on review all screen?
+- filter(s) on review all screen
+- ordering results on review all

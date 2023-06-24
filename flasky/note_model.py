@@ -21,7 +21,7 @@ class Note:
         self.location = location
         self.tags = tags
         self.picture = picture
-        self.thumb = picture    # TODO: sort this
+        self.thumb = thumb
 
     def debug(self):
         for attr, value in vars(self).items():
@@ -35,7 +35,7 @@ class Note:
             'location': self.location,
             'tags': self.tags,
             'picture': self.picture,
-            'thumb': self.picture   # TODO: auto save and resize image, then get thumb fname
+            'thumb': self.thumb or "placeholder.jpg"
         }
         try:
             self._id = wild_plants_collection.insert_one(note_data).inserted_id
@@ -86,9 +86,10 @@ class Note:
             'location': self.location,
             'tags': self.tags,
             'picture': self.picture,
-            'thumb': self.picture   # TODO: sort
+            'thumb': self.thumb or "placeholder.jpg"
         }
         return wild_plants_collection.update_one({'_id': ObjectId(self._id)}, {'$set': note_data})
 
     def delete(self):
+        # TODO: delete our image files while we're at it
         return wild_plants_collection.delete_one({'_id': ObjectId(self._id)})

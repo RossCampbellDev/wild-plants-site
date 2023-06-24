@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from flasky.note_model import Note
-from flasky.photo_upload.photo_uploading import generate_thumbnail, upload_picture
+from flasky.photo_upload.photo_uploading import upload_thumbnail, upload_picture
 
 
 # name of the blueprint, __name__, path to our static folder and templates folder
@@ -42,17 +42,18 @@ def update_note():
     tags = [t.lstrip() for t in data.get("tags-input-text").split(" ")]
 
     # handling the image upload
-    successful_upload = False
     picture="placeholder.jpg"
     picture_file = request.files["picture-input-file"]
     if picture_file.filename != '':
-        thumb = generate_thumbnail(picture_file)
-        upload_picture(picture_file, _id)
-        upload_picture(thumb, _id)
+        picture = upload_picture(picture_file, _id)
+        if picture != False:
+            thumb = upload_thumbnail(picture_file, _id)
+        else:
+            print("error uploading picture") #TODO: error handling
 
-
+    # back to creating the note document for mongodb
     update_note = Note(
-        title=title, notes=notes, location=location, tags=tags, date=date, picture=picture
+        title=title, notes=notes, location=location, tags=tags, date=date, picture=picture, thumb=thumb
     )
     
     update_note._id = _id
