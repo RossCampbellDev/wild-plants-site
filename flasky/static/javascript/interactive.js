@@ -61,3 +61,9 @@ function editNote() {
     const frm = document.getElementById("popup-form");
     frm.submit();
 }
+
+function deleteNote() {
+    const frm = document.getElementById("edit-note-form");
+    frm.action = "/review/deletenote";
+    frm.submit();
+}

@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, request
 from flasky.note_model import Note
+from flasky.photo_upload.photo_uploading import generate_thumbnail, upload_picture
 
 
 # name of the blueprint, __name__, path to our static folder and templates folder
 all_notes_blueprint = Blueprint("all_notes_blueprint", __name__, static_folder="static", template_folder="templates")
+
 
 
 @all_notes_blueprint.route("/")
@@ -32,18 +34,37 @@ def edit_note():
 @all_notes_blueprint.route("/updatenote", methods=["POST"])
 def update_note():
     data = request.form
+    _id = data.get("id-input-text")
     title = data.get("title-input-text")
     date = data.get("date-input-text")
     location = data.get("location-input-text")
     notes = data.get("notes-input-text")
-    picture = data.get("picture-input-text") or "placeholder.jpg"
-    # TODO: thumb
     tags = [t.lstrip() for t in data.get("tags-input-text").split(" ")]
+
+    # handling the image upload
+    successful_upload = False
+    picture="placeholder.jpg"
+    picture_file = request.files["picture-input-file"]
+    if picture_file.filename != '':
+        thumb = generate_thumbnail(picture_file)
+        upload_picture(picture_file, _id)
+        upload_picture(thumb, _id)
+
 
     update_note = Note(
         title=title, notes=notes, location=location, tags=tags, date=date, picture=picture
     )
     
-    update_note._id = data.get("id-input-text")
+    update_note._id = _id
     update_note.update()
+    return default()
+
+
+@all_notes_blueprint.route("/deletenote", methods=["POST"])
+def delete_note():
+    data = request.form
+    id = data.get("id-input-text")
+    delete_note = Note.get_instance(Note.get_by_id(id))
+    if delete_note:
+        delete_note.delete()
     return default()

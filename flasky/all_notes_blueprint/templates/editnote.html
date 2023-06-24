@@ -2,7 +2,7 @@
 {% block mainbody %}
     <section>
         {{ data }}
-        <form method="post" action="/review/updatenote">
+        <form method="post" action="/review/updatenote" id="edit-note-form" enctype="multipart/form-data">
             <input type="hidden" name="id-input-text" id="id-input-text" value="{{edit_note._id}}" />
             <div class="section-control" onClick="minimise(this)">[-]</div>
             <div class="big-block">
@@ -36,7 +36,7 @@
                 <!-- upload a pic -->
                 <div id="notes-input" class="new-note-inputs">
                     <label class="label-text" for="picture-input-text">Photo:</label><br/>
-                    <input type="text" name="picture-input-text" placeholder="REPLACE ME (photo upload)" value="{{edit_note.picture}}"  />
+                    <input type="file" name="picture-input-file" value="{{edit_note.picture}}"  />
                 </div>
 
                 <!-- tags -->
@@ -58,6 +58,7 @@
                 </div>
 
                 <input type="submit" name="save-note" value="Update" class="nav-button" />
+                <button type="button" class="nav-button" onclick="deleteNote()">Delete</button>
             </div>
         </form>
     </section>

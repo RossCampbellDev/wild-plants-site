@@ -18,13 +18,13 @@
 - date picker ✅
 - form submit ✅
 - save array from tags ✅
-- photo upload 
-- create thumbnail image with square ratio
 - save to mongodb ✅
+- photo upload ✅
+    - create thumbnail image with square ratio
 
 ## edit note
 - change any field value ✅
-- delete
+- delete ✅
 
 ## user system
 - user login
