@@ -33,12 +33,23 @@ textarea {
     line-height: 1;
     wrap: "soft";
     padding: 4px;
+    border: 0; border-bottom: 2px solid rgb(44, 107, 44);
 }
 
-input {
+label {
+    display: inline; white-space: pre-wrap; font-size: 17pt;
+}
+.label-text {
+    color: #181818;
+}
+
+input[type=text], input[type=date] {
     font-family: inherit;
     font-size: 14pt;
     line-height: 0.8;
+    width: 250px;
+    padding: 4px;
+    border: 0; border-bottom: 2px solid rgb(44, 107, 44);
 }
 
 nav {
@@ -111,7 +122,10 @@ section {
 }
 
 .big-block {
-    height: auto;
+    height: auto;  overflow: auto;
+}
+.big-block-floater {
+    display: table; min-width: 30%;
 }
 
 .block-title {
@@ -120,10 +134,7 @@ section {
     font-weight: bold;
     margin: 6px; margin-bottom: 18px;
     border-bottom: 1px solid rgb(44, 107, 44);
-}
-
-.new-note-inputs {
-    color: rgb(66, 202, 134);
+    padding-bottom: 4px;
 }
 
 .notes-grid {
@@ -168,7 +179,7 @@ section {
     padding: 1px; padding-left: 5px; padding-right: 5px;
 }
 
-.note-desc {
+/*.note-desc {
     position: absolute;
     width: 100%; height: 100%;
     top: 0; left: 0;
@@ -182,15 +193,11 @@ section {
 }
 .note-desc-text {
     padding: 8px; padding-top: 34px;
-}
+}*/
 
 .new-note-inputs {
-    font-size: 28px;
     margin-bottom: 8px;
-    color: #181818;
-}
-
-.label-text {
+    font-size: 28px;
     color: #181818;
 }
 

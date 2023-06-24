@@ -42,7 +42,7 @@ def new_note():
         else:
             print("error uploading picture") #TODO: error handling -> delete the document we just added
 
-
+    new_note.debug()
     new_note.update()
 
     return render_template("new_note/submitnewnote.html", new_note=new_note)

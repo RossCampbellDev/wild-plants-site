@@ -6,59 +6,65 @@
             <input type="hidden" name="id-input-text" id="id-input-text" value="{{edit_note._id}}" />
             <div class="section-control" onClick="minimise(this)">[-]</div>
             <div class="big-block">
-                <div class="block-title">Edit Note</div>
-            </div>
-            <div>
-                <!-- title -->
-                <div id="title-input" class="new-note-inputs">
-                    <label class="label-text" for="title-input-text">Title:</label><br/>
-                    <input type="text" name="title-input-text" placeholder="title text" value="{{edit_note.title}}" />
+                <div class="block-title">
+                    <!--Edit Note (title text)-->
+                    <input type="submit" name="save-note" value="Update Note" class="nav-button" />
+                    <button type="button" class="nav-button" onclick="deleteNote()">Delete Note</button>
                 </div>
 
-                <!-- date -->
-                <div id="date-input" class="new-note-inputs">
-                    <label class="label-text" for="date-input-text">Date:</label><br/>
-                    <input type="date" id="date-input-text" name="date-input-text" value="{{edit_note.date}}" />
-                </div>
+                <div class="big-block-floater">
+                    <!-- text inputs -->
+                    <div style="float:left; width: 40%;">
+                        <!-- title -->
+                        <div id="title-input" class="new-note-inputs">
+                            <label class="label-text" for="title-input-text">Title:</label><br/>
+                            <input type="text" name="title-input-text" placeholder="Note Title" value="{{edit_note.title}}" />
+                        </div>
 
-                <!-- location - paste from maps? -->
-                <div id="loc-input" class="new-note-inputs">
-                    <label class="label-text" for="location-input-text">Location:</label><br/>
-                    <input type="text" name="location-input-text" placeholder="google?" value="{{edit_note.location}}"  />
-                </div>
+                        <!-- date -->
+                        <div id="date-input" class="new-note-inputs">
+                            <label class="label-text" for="date-input-text">Date:</label><br/>
+                            <input type="date" id="date-input-text" name="date-input-text" value="{{edit_note.date}}" />
+                        </div>
 
-                <!-- text notes -->
-                <div id="notes-input" class="new-note-inputs">
-                    <label class="label-text" for="notes-input-text">Notes:</label><br/>
-                    <textarea name="notes-input-text" cols="70" rows="5">{{edit_note.notes}}</textarea>
-                </div>
+                        <!-- location - paste from maps? -->
+                        <div id="loc-input" class="new-note-inputs">
+                            <label class="label-text" for="location-input-text">Location:</label><br/>
+                            <input type="text" name="location-input-text" placeholder="Where were you?" value="{{edit_note.location}}"  />
+                        </div>
 
-                <!-- upload a pic -->
-                <div id="notes-input" class="new-note-inputs">
-                    <label class="label-text" for="picture-input-text">Photo:</label><br/>
-                    <input type="file" name="picture-input-file" value="{{edit_note.picture}}"  />
-                </div>
+                        <!-- text notes -->
+                        <div id="notes-input" class="new-note-inputs">
+                            <label class="label-text" for="notes-input-text">Notes:</label><br/>
+                            <textarea name="notes-input-text" cols="40" rows="5" placeholder="Notes go here..." style="resize: none;">{{edit_note.notes}}</textarea>
+                        </div>
 
-                <!-- tags -->
-                <div id="popup-input-form">
-                    <div id="popup-input-form-container">
-                        <input type="text" name="new-tag-input" id="new-tag-input" placeholder="tag" /><br/><br/>
-                        <button class="small-button" type="button" onclick="completeAddTag()">Update</button>
-                        <button class="small-button" type="button" onclick="cancelAddTag()">Cancel</button>
+                        <!-- tags -->
+                        <div id="popup-input-form">
+                            <div id="popup-input-form-container">
+                                <input type="text" name="new-tag-input" id="new-tag-input" placeholder="Add a tag" /><br/><br/>
+                                <button class="small-button" type="button" onclick="completeAddTag()">Update</button>
+                                <button class="small-button" type="button" onclick="cancelAddTag()">Cancel</button>
+                            </div>
+                        </div>
+                        <div id="tags-input" class="new-note-inputs">
+                            <label class="label-text" for="tags-input-text">Tags:</label><br/>
+                            {% if edit_note.tags %}
+                                <textarea name="tags-input-text" id="tags-input-text" cols="40" rows="3" readonly style="resize: none;" placeholder="Add a tag">{{edit_note.tags}}</textarea><br/>
+                            {% else %}
+                                <textarea name="tags-input-text" id="tags-input-text" cols="40" rows="3" readonly style="resize: none;" placeholder="Add a tag"></textarea><br/>
+                            {% endif %}
+                            <button class="small-button" type="button" onclick="addTag()">Add A Tag</button>
+                        </div>
                     </div>
-                </div>
-                <div id="tags-input" class="new-note-inputs">
-                    <label class="label-text" for="tags-input-text">Tags:</label><br/>
-                    {% if edit_note.tags %}
-                        <textarea name="tags-input-text" id="tags-input-text" cols="30" rows="5" readonly style="resize: none;">{{edit_note.tags}}</textarea><br/>
-                    {% else %}
-                        <textarea name="tags-input-text" id="tags-input-text" cols="30" rows="5" readonly style="resize: none;"></textarea><br/>
-                    {% endif %}
-                    <button class="small-button" type="button" onclick="addTag()">Add A Tag</button>
-                </div>
 
-                <input type="submit" name="save-note" value="Update" class="nav-button" />
-                <button type="button" class="nav-button" onclick="deleteNote()">Delete</button>
+                    <!-- upload a pic -->
+                        <div style="float:right; padding-left: 20px; vertical-align: top;">
+                                <label class="label-text" for="picture-input-text">Photo:</label>
+                                <input type="file" name="picture-input-file" value="{{edit_note.picture}}"  /><br/>
+                                <img src="{{ url_for('static', filename="images/photos/" + edit_note.picture) }}" width="500" />
+                        </div>
+                </div>
             </div>
         </form>
     </section>

@@ -28,6 +28,7 @@ def edit_note():
             edit_note["tags"] = edit_note["tags"][0]
     else:
         edit_note["tags"] = ""
+
     return render_template("editnote.html", edit_note=edit_note)
 
 

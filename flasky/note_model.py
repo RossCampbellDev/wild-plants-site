@@ -77,6 +77,9 @@ class Note:
             thumb=note_dict["thumb"]
         )
         return this_note
+    
+    def get_id(self):
+        return str(self._id)
 
     def update(self):
         note_data = {
@@ -91,5 +94,10 @@ class Note:
         return wild_plants_collection.update_one({'_id': ObjectId(self._id)}, {'$set': note_data})
 
     def delete(self):
-        # TODO: delete our image files while we're at it
+        # TODO: better file paths?
+        if os.path.exists("flasky/static/images/photos/"+self.picture):
+            os.remove("flasky/static/images/photos/"+self.picture)
+        if os.path.exists("flasky/static/images/thumbnails/"+self.thumb):
+            os.remove("flasky/static/images/thumbnails/"+self.thumb)
+
         return wild_plants_collection.delete_one({'_id': ObjectId(self._id)})

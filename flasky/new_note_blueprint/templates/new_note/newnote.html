@@ -10,46 +10,46 @@
             <div>
                 <!-- title -->
                 <div id="title-input" class="new-note-inputs">
-                    <label class="label-text" for="title-input-text">Title:</label><br/>
-                    <input type="text" name="title-input-text" placeholder="title text" />
+                    <!--<label class="label-text" for="title-input-text">Title:</label><br/>-->
+                    <input type="text" name="title-input-text" placeholder="Note Title" />
                 </div>
 
                 <!-- date -->
                 <div id="date-input" class="new-note-inputs">
-                    <label class="label-text" for="date-input-text">Date:</label><br/>
+                    <!--<label class="label-text" for="date-input-text">Date:</label><br/>-->
                     <input type="date" id="date-input-text" name="date-input-text" value="{{datenow}}" />
                 </div>
 
                 <!-- location - paste from maps? -->
                 <div id="loc-input" class="new-note-inputs">
-                    <label class="label-text" for="location-input-text">Location:</label><br/>
-                    <input type="text" name="location-input-text" placeholder="google?" />
+                    <!--<label class="label-text" for="location-input-text">Location:</label><br/>-->
+                    <input type="text" name="location-input-text" placeholder="Where were you?" />
                 </div>
 
                 <!-- text notes -->
                 <div id="notes-input" class="new-note-inputs">
-                    <label class="label-text" for="notes-input-text">Notes:</label><br/>
-                    <textarea name="notes-input-text" cols="70" rows="5"></textarea>
+                    <!--<label class="label-text" for="notes-input-text">Notes:</label><br/>-->
+                    <textarea name="notes-input-text" cols="50" rows="5" placeholder="Notes go here..."></textarea>
                 </div>
 
                 <!-- upload a pic -->
                 <div id="notes-input" class="new-note-inputs">
-                    <label class="label-text" for="picture-input-text">Photo:</label><br/>
+                    <!--<label class="label-text" for="picture-input-text">Photo:</label><br/>-->
                     <input type="file" name="picture-input-file" />
                 </div>
 
                 <!-- tags -->
                 <div id="popup-input-form">
                     <div id="popup-input-form-container">
-                        <input type="text" name="new-tag-input" id="new-tag-input" placeholder="tag" /><br/><br/>
+                        <input type="text" name="new-tag-input" id="new-tag-input" placeholder="Add a tag" /><br/><br/>
                         <button class="small-button" type="button" onclick="completeAddTag()">Go</button>
                         <button class="small-button" type="button" onclick="cancelAddTag()">Cancel</button>
                     </div>
                 </div>
 
                 <div id="tags-input" class="new-note-inputs">
-                    <label class="label-text" for="tags-input-text">Tags:</label><br/>
-                    <textarea name="tags-input-text" id="tags-input-text" cols="30" rows="5" readonly style="resize: none;"></textarea><br/>
+                    <!--<label class="label-text" for="tags-input-text">Tags:</label><br/>-->
+                    <textarea name="tags-input-text" id="tags-input-text" cols="30" rows="5" readonly style="resize: none;" placeholder="Add a tag"></textarea><br/>
                     <button class="small-button" type="button" onclick="addTag()">Add A Tag</button>
                 </div>
 
