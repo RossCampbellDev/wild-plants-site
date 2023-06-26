@@ -13,7 +13,7 @@ db = client["wild-plants"]
 wild_plants_collection = db["wild-plants-collection"]
 
 class Note:
-    def __init__(self, title, notes, location, date=datetime.datetime.now().strftime("%Y-%m-%d"), picture="placeholder.jpg", tags=[], _id="", thumb="placeholder.jpg"):
+    def __init__(self, title, notes, location, user_id, date=datetime.datetime.now().strftime("%Y-%m-%d"), picture="placeholder.jpg", tags=[], _id="", thumb="placeholder.jpg"):
         self._id = _id
         self.title = title
         self.date = date
@@ -22,6 +22,7 @@ class Note:
         self.tags = tags
         self.picture = picture
         self.thumb = thumb
+        self.user_id = user_id
 
     def debug(self):
         for attr, value in vars(self).items():
@@ -35,7 +36,8 @@ class Note:
             'location': self.location,
             'tags': self.tags,
             'picture': self.picture,
-            'thumb': self.thumb or "placeholder.jpg"
+            'thumb': self.thumb or "placeholder.jpg",
+            'user_id': self.user_id
         }
         try:
             self._id = wild_plants_collection.insert_one(note_data).inserted_id
@@ -74,7 +76,8 @@ class Note:
             location=note_dict["location"],
             tags=note_dict["tags"],
             picture=note_dict["picture"],
-            thumb=note_dict["thumb"]
+            thumb=note_dict["thumb"],
+            user_id=note_dict["user_id"]
         )
         return this_note
     
@@ -89,7 +92,8 @@ class Note:
             'location': self.location,
             'tags': self.tags,
             'picture': self.picture,
-            'thumb': self.thumb or "placeholder.jpg"
+            'thumb': self.thumb or "placeholder.jpg",
+            'user_id': self.user_id
         }
         return wild_plants_collection.update_one({'_id': ObjectId(self._id)}, {'$set': note_data})
 

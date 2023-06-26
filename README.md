@@ -10,6 +10,8 @@
 
 ⭕ input validation/sanitisation
 
+✅ user model
+
 ## review all
 ✅ read from json array 
 
@@ -65,6 +67,13 @@
 ⭕ retrieve user data
 
 ⭕ check for logged in, display "log in" or "sign up" or go straight to new note
+
+```
+import bcrypt
+hashed_pw = bcrypt.hashpw(passphrase, bcrypt.gensalt())
+if bcrypt.hashpw(testphrase.encode('utf-8'), hashed_pw) == hashed_pw:
+    print("pw match")
+```
 
 ## search system
 ⭕ tags

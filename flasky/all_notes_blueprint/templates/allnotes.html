@@ -2,6 +2,12 @@
 {% block mainbody %}
     <section>
         <div class="section-control" onClick="minimise(this)">[-]</div>
+
+        <!-- search/filter section -->
+        <div class="big-block">
+        </div>
+
+        <!-- display our notes and thumbnails -->
         <div class="big-block">
             <!--<div class="block-title">All Existing Notes</div>-->
             <div class="notes-grid">
@@ -13,16 +19,9 @@
         </div>
     </section>
     
-    <div id="popup-input-form" onclick="closeNote()">
-        <div id="popup-input-form-container">
-            <h3 id="popup-input-title"> </h3>
-            <div class="review-note-text" id="review-note-text">    </div>
-            <div class="review-note-text-small" id="review-note-tags">  </div>
-            <form method="post" action="/review/editnote" id="note-form">
-                <button class="small-button" type="button" onclick="closeNote()">OK</button>
-                <button class="small-button" >Edit</button>
-                <input type="hidden" name="note-to-edit" id="note-to-edit" value="" />
-            </form>
-        </div>
-    </div>
+    
+    <!-- get us to the edit screen -->
+    <form method="post" action="/review/editnote" id="note-form">
+        <input type="hidden" name="note-to-edit" id="note-to-edit" value="" />
+    </form>
 {% endblock %}

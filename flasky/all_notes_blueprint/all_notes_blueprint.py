@@ -7,7 +7,6 @@ from flasky.photo_upload.photo_uploading import upload_thumbnail, upload_picture
 all_notes_blueprint = Blueprint("all_notes_blueprint", __name__, static_folder="static", template_folder="templates")
 
 
-
 @all_notes_blueprint.route("/")
 def default():
     all_notes = Note.get_all()
