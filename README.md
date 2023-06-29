@@ -37,6 +37,8 @@
 
 ✅ create thumbnail image with square ratio
 
+    ⭕ doesn't seem to always crop - because of size perhaps?
+
 ⭕ error handling for picture file uploads
 
 ⭕ better handle 'success' eg nicer transition after new note created

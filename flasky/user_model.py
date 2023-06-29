@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 from bson.objectid import ObjectId
 
-from flasky import bcrypt
+import bcrypt
 
 import os
 from dotenv import load_dotenv
@@ -16,10 +16,9 @@ db = client["wild-plants"]
 user_collection = db["user-collection"]
 
 class User:
-    def __init__(self, username, password, passhash, _id=""):
+    def __init__(self, username, passhash, _id=""):
         self._id = _id
         self.username = username
-        self.password = password
         self.passhash = passhash
 
     def debug(self):
@@ -33,7 +32,7 @@ class User:
             return None
         
         if self.password:
-            self.passhash = bcrypt.haspw(self.password.encode('utf-8'), bcrypt.gensalt())
+            self.passhash = bcrypt.hahspw(self.password.encode('utf-8'), bcrypt.gensalt())
         user_data = {
             'username': self.username,
             'passhash': self.passhash
@@ -80,5 +79,8 @@ class User:
         return this_user
     
     @staticmethod
-    def check_pass(test_password, User):
-        return bcrypt.checkpw(test_password.encode('utf-8'), User.passhash.encode('utf-8'))
+    def check_pass(test_username, test_password):
+        user = User.get_by_username(test_username)
+        if user:
+            return bcrypt.checkpw(test_password.encode('utf-8'), user.passhash.encode('utf-8'))
+        return False

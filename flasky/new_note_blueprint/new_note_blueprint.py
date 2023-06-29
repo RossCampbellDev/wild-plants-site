@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request
 from flasky.note_model import Note
 from werkzeug.utils import secure_filename
 from flasky.photo_upload.photo_uploading import upload_thumbnail, upload_picture
-import datetime, os
+import datetime
 
 # name of the blueprint, __name__, path to our static folder and templates folder
 new_note_blueprint = Blueprint("new_note_blueprint", __name__, static_folder="static", template_folder="templates")
@@ -27,8 +27,11 @@ def new_note():
     notes = data.get("notes-input-text")
     tags = [t.lstrip() for t in data.get("tags-input-text").split(" ")]
 
+    # TODO: get the user id properly for new notes
+    user_id = "649994eed5f207baa6eecfb2"
+
     new_note = Note(
-        title=title, notes=notes, location=location, tags=tags, date=date, picture="", thumb=""
+        title=title, notes=notes, location=location, tags=tags, date=date, picture="", thumb="", user_id=user_id
     )
     new_id = str(new_note.save())
 

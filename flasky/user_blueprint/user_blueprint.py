@@ -7,6 +7,7 @@ user_blueprint = Blueprint("user_blueprint", __name__, static_folder="static", t
 
 
 @user_blueprint.route("/")
+@user_blueprint.route("/login")
 def login():
     return render_template("login.html")
 

@@ -59,7 +59,7 @@
                     </div>
 
                     <!-- upload a pic -->
-                        <div style="float:right; padding-left: 20px; vertical-align: top; position: relative;">
+                        <div style="float:right; padding-left: 20px; vertical-align: top; z-index: 0;">
                                 <label class="label-text" for="picture-input-text">Photo:</label>
                                 <input type="file" name="picture-input-file" value="{{edit_note.picture}}"  /><br/>
                                 <img src="{{ url_for('static', filename="images/photos/" + edit_note.picture) }}" width="500" />

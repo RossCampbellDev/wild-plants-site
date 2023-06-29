@@ -1,9 +1,8 @@
-import datetime
+import datetime, os
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 from bson.objectid import ObjectId
 
-import os
 from dotenv import load_dotenv
 load_dotenv()
 MONGO_CONN_STRING = os.environ.get('MONGO_CONN_STRING')
@@ -11,6 +10,7 @@ MONGO_CONN_STRING = os.environ.get('MONGO_CONN_STRING')
 client = MongoClient(MONGO_CONN_STRING)
 db = client["wild-plants"]
 wild_plants_collection = db["wild-plants-collection"]
+user_collection = db["user-collection"]
 
 class Note:
     def __init__(self, title, notes, location, user_id, date=datetime.datetime.now().strftime("%Y-%m-%d"), picture="placeholder.jpg", tags=[], _id="", thumb="placeholder.jpg"):
@@ -65,6 +65,22 @@ class Note:
     @staticmethod
     def get_by_date(date):
         return wild_plants_collection.find({'date': { '$gte': date }})
+
+    @staticmethod
+    def get_by_username(username):
+        user_notes = user_collection.aggregate([
+            {"$lookup": {
+                "from": "user-collection",
+                "locaField": "user_id",
+                "foreignField": "_id",
+                "as": "user-collection"
+            }},
+            {"$match": {"user-collection.username": username}}
+        ])
+
+        print(user_notes)   # test
+
+        return user_notes
     
     @staticmethod
     def get_instance(note_dict):

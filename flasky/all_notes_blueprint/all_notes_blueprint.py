@@ -41,19 +41,27 @@ def update_note():
     notes = data.get("notes-input-text")
     tags = [t.lstrip() for t in data.get("tags-input-text").split(" ")]
 
+    update_note = Note.get_by_id(_id)
+    print(update_note)
+
     # handling the image upload
-    picture="placeholder.jpg"
+    picture = update_note["picture"]
+    thumb = update_note["thumb"] or "placeholder.jpg"
     picture_file = request.files["picture-input-file"]
-    if picture_file.filename != '':
+
+    if picture_file.filename != '' and picture_file.filename != update_note["picture"]:
         picture = upload_picture(picture_file, _id)
         if picture != False:
             thumb = upload_thumbnail(picture_file, _id)
         else:
             print("error uploading picture") #TODO: error handling
 
+    # TODO: get actual user_id
+    user_id = "649994eed5f207baa6eecfb2"
+
     # back to creating the note document for mongodb
     update_note = Note(
-        title=title, notes=notes, location=location, tags=tags, date=date, picture=picture, thumb=thumb
+        user_id=user_id, title=title, notes=notes, location=location, tags=tags, date=date, picture=picture, thumb=thumb
     )
     
     update_note._id = _id
