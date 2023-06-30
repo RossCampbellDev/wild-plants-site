@@ -1,22 +1,27 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session
 from flasky.note_model import Note
 from flasky.photo_upload.photo_uploading import upload_thumbnail, upload_picture
+from flasky import logged_in
 
 
 # name of the blueprint, __name__, path to our static folder and templates folder
 all_notes_blueprint = Blueprint("all_notes_blueprint", __name__, static_folder="static", template_folder="templates")
 
 
+# TODO: if valid user login session
 @all_notes_blueprint.route("/")
+@logged_in
 def default():
-    all_notes = Note.get_all()
+    all_notes = Note.get_by_user_id(session["user_id"])
     return render_template("allnotes.html", all_notes=all_notes)
 
 
 @all_notes_blueprint.route("/editnote", methods=["GET", "POST"])
+@logged_in
 def edit_note():
     if request.method == "GET":
-        return default() # shouldn't be here naughty!    
+        return default() # shouldn't be here naughty!  
+      
     data = request.form
     edit_note = Note.get_by_id(data.get("note-to-edit"))
     
@@ -32,6 +37,7 @@ def edit_note():
 
 
 @all_notes_blueprint.route("/updatenote", methods=["POST"])
+@logged_in
 def update_note():
     data = request.form
     _id = data.get("id-input-text")
@@ -56,12 +62,9 @@ def update_note():
         else:
             print("error uploading picture") #TODO: error handling
 
-    # TODO: get actual user_id
-    user_id = "649994eed5f207baa6eecfb2"
-
     # back to creating the note document for mongodb
     update_note = Note(
-        user_id=user_id, title=title, notes=notes, location=location, tags=tags, date=date, picture=picture, thumb=thumb
+        user_id=session["user_id"], title=title, notes=notes, location=location, tags=tags, date=date, picture=picture, thumb=thumb
     )
     
     update_note._id = _id
@@ -70,6 +73,7 @@ def update_note():
 
 
 @all_notes_blueprint.route("/deletenote", methods=["POST"])
+@logged_in
 def delete_note():
     data = request.form
     id = data.get("id-input-text")

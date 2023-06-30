@@ -1,8 +1,24 @@
 {% extends "base.html" %}
 {% block mainbody %}
     <section>
-        <div class="block-title">Login Screen</div>
+        <div class="block-title">User Log In</div>
         <div class="big-block">
+            <form method="post" action="/users/login">
+                <!-- username -->
+                <div id="username-input" class="new-note-inputs">
+                    <!--<label class="label-text" for="username-input-text">User Name:</label><br/>-->
+                    <input type="text" name="username-input-text" placeholder="Username" />
+                </div>
+
+                <!-- password 1 -->
+                <div id="password-input" class="new-note-inputs">
+                    <!--<label class="label-text" for="password-input-text">Password:</label><br/>-->
+                    <input
+                    type="password" name="password-input-text" placeholder="Password" />
+                </div>
+
+                <input type="submit" value="Go!" class="nav-button" />
+            </form>
         </div>
     </section>
 {% endblock %}

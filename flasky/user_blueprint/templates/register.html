@@ -1,8 +1,30 @@
 {% extends "base.html" %}
 {% block mainbody %}
     <section>
-        <div class="block-title">Register New User Screen</div>
+        <div class="block-title">New User - Welcome!</div>
         <div class="big-block">
+            <form method="post" action="/users/register">
+                <!-- username -->
+                <div id="username-input" class="new-note-inputs">
+                    <label class="label-text" for="username-input-text">User Name:</label><br/>
+                    <input type="text" name="username-input-text" placeholder="Name" />
+                </div>
+
+                <!-- password 1 -->
+                <div id="password-input" class="new-note-inputs">
+                    <label class="label-text" for="password-input-text">Password:</label><br/>
+                    <input
+                    type="password" name="password-input-text" placeholder="Password" />
+                </div>
+
+                <!-- password 2 -->
+                <div id="password-input-check" class="new-note-inputs">
+                    <label class="label-text" for="password-input-check">Confirm Password:</label><br/>
+                    <input type="password" name="password-input-check" placeholder="Confirm" />
+                </div>
+
+                <input type="submit" value="Go!" class="nav-button" />
+            </form>
         </div>
     </section>
 {% endblock %}

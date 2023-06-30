@@ -31,12 +31,11 @@ class User:
         if User.get_by_username(self.username):
             return None
         
-        if self.password:
-            self.passhash = bcrypt.hahspw(self.password.encode('utf-8'), bcrypt.gensalt())
         user_data = {
             'username': self.username,
             'passhash': self.passhash
         }
+
         try:
             self._id = user_collection.insert_one(user_data).inserted_id
         except PyMongoError as e:
@@ -82,5 +81,5 @@ class User:
     def check_pass(test_username, test_password):
         user = User.get_by_username(test_username)
         if user:
-            return bcrypt.checkpw(test_password.encode('utf-8'), user.passhash.encode('utf-8'))
+            return bcrypt.checkpw(test_password.encode('utf-8'), user["passhash"])
         return False

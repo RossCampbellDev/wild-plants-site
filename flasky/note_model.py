@@ -77,10 +77,11 @@ class Note:
             }},
             {"$match": {"user-collection.username": username}}
         ])
-
-        print(user_notes)   # test
-
         return user_notes
+
+    @staticmethod
+    def get_by_user_id(user_id):
+        return wild_plants_collection.find({ "user_id": { '$eq': user_id }})
     
     @staticmethod
     def get_instance(note_dict):

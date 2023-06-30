@@ -21,6 +21,8 @@
 
 ✅ fix grid so it's more evenly distributed 
 
+⭕ the note body text is no longer hidden?
+
 ### view note overlay
 ✅ click on an existing note and see the full description and details?
 
@@ -60,22 +62,18 @@
 
 
 ## user system
-⭕ user login
+✅ user login
 
-⭕ user session
+✅ user session - change in __init__.py decorator function
 
-⭕ create user
+✅ create user
 
-⭕ retrieve user data
+✅ check for logged in, display "log in" or "sign up" or go straight to new note
 
-⭕ check for logged in, display "log in" or "sign up" or go straight to new note
+✅ retrieve user notes
 
-```
-import bcrypt
-hashed_pw = bcrypt.hashpw(passphrase, bcrypt.gensalt())
-if bcrypt.hashpw(testphrase.encode('utf-8'), hashed_pw) == hashed_pw:
-    print("pw match")
-```
+✅ redirect to login on all other screens, if nobody is logged in (custom decorator)
+
 
 ## search system
 ⭕ tags
