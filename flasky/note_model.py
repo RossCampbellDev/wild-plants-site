@@ -24,9 +24,11 @@ class Note:
         self.thumb = thumb
         self.user_id = user_id
 
+
     def debug(self):
         for attr, value in vars(self).items():
             print(f"{attr}: {value}")
+
 
     def save(self):
         note_data = {
@@ -46,25 +48,31 @@ class Note:
 
         return self._id
 
+
     @staticmethod
     def get_all():
         return list(wild_plants_collection.find())
     
+
     @staticmethod
     def get_by_id(id):
         return wild_plants_collection.find_one({'_id': ObjectId(id)})
+
 
     @staticmethod
     def get_by_title(title):
         return wild_plants_collection.find_one({'title': title})
 
+
     @staticmethod
     def get_by_tags(tags):
         return wild_plants_collection.find({'tags': { '$in': tags}})
 
+
     @staticmethod
     def get_by_date(date):
         return wild_plants_collection.find({'date': { '$gte': date }})
+
 
     @staticmethod
     def get_by_username(username):
@@ -79,10 +87,27 @@ class Note:
         ])
         return user_notes
 
+
     @staticmethod
     def get_by_user_id(user_id):
         return wild_plants_collection.find({ "user_id": { '$eq': user_id }})
     
+
+    @staticmethod
+    def get_search_results(tags, location, search_date, user_id):
+        query = { "user_id": { '$eq': user_id }}
+        if tags:
+            query["tags"] = {"$in": tags}
+        if location:
+            query["location"] = {"$regex": location, "$options": "i"}
+        if search_date:
+            query["date"] = {"$gte": search_date}
+
+        print(f'QUERY: {query}')
+
+        return wild_plants_collection.find(query)
+    
+
     @staticmethod
     def get_instance(note_dict):
         this_note = Note(
@@ -98,8 +123,10 @@ class Note:
         )
         return this_note
     
+
     def get_id(self):
         return str(self._id)
+
 
     def update(self):
         note_data = {
@@ -113,6 +140,7 @@ class Note:
             'user_id': self.user_id
         }
         return wild_plants_collection.update_one({'_id': ObjectId(self._id)}, {'$set': note_data})
+
 
     def delete(self):
         # TODO: better file paths?

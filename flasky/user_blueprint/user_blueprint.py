@@ -12,7 +12,7 @@ user_blueprint = Blueprint("user_blueprint", __name__, static_folder="static", t
 @user_blueprint.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
-        return render_template("login.html", new_user=True)
+        return render_template("login.html", new_user=True) # TODO: do we need new_user?  can't remember why i put it here
     
     data = request.form
     username = data.get("username-input-text")
@@ -27,6 +27,16 @@ def login():
         return redirect("/review", code=302)
     
     return redirect("/login", code=302)
+
+
+# LOGOUT
+@user_blueprint.route("/logout")
+def logout():
+    session["user_id"] = None
+    session["username"] = None
+    session["logged_in"] = False
+
+    return login()
 
 
 # REGISTER

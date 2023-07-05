@@ -5,6 +5,31 @@
 
         <!-- search/filter section -->
         <div class="big-block">
+            <h2>Welcome back {{ username }}</h2>
+            <div id="search-block">
+                <form method="post" action="/review/searchnotes" id="search-notes-form">
+                    <!-- Tag -->
+                    <label class="label-text" for="tag-input-text">Tag:</label>
+                    <input type="text" name="tag-input-text" placeholder="#tag1 #tag2 #tag3" value="{{tags}}" />
+
+                    <!-- Location -->
+                    &nbsp;
+                    <label class="label-text" for="location-input-text">Where:</label>
+                    <input type="text" name="location-input-text" placeholder="Search by location" value="{{location}}" />
+                    
+                    <!-- Date -->
+                    &nbsp;
+                    <label class="label-text" for="date-input-text">Date:</label>
+                    {% if search_date %}
+                        <input type="date" id="date-input-text" name="date-input-text" value="{{search_date}}" />
+                    {% else %}
+                        <input type="date" id="date-input-text" name="date-input-text" value="{{datenow}}" />
+                    {% endif %}
+                    
+                    &nbsp;&nbsp;
+                    <input type="submit" name="search-button" value="Search" class="nav-button" />
+                </form>
+            </div>
         </div>
 
         <!-- display our notes and thumbnails -->

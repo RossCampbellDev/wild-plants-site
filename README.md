@@ -21,7 +21,7 @@
 
 ✅ fix grid so it's more evenly distributed 
 
-⭕ the note body text is no longer hidden?
+✅ the note body text is no longer hidden?
 
 ### view note overlay
 ✅ click on an existing note and see the full description and details?
@@ -74,12 +74,16 @@
 
 ✅ redirect to login on all other screens, if nobody is logged in (custom decorator)
 
+⭕ session time out
+
+✅ log out button
+
 
 ## search system
-⭕ tags
+✅ tags
 
-⭕ search by location??
+✅ search by location??
 
-⭕ filter(s) on review all screen
+✅ filter(s) on review all screen
 
 ⭕ ordering results on review all

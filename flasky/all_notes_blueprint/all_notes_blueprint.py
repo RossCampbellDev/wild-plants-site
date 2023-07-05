@@ -4,16 +4,17 @@ from flasky.photo_upload.photo_uploading import upload_thumbnail, upload_picture
 from flasky import logged_in
 
 
-# name of the blueprint, __name__, path to our static folder and templates folder
 all_notes_blueprint = Blueprint("all_notes_blueprint", __name__, static_folder="static", template_folder="templates")
 
 
-# TODO: if valid user login session
 @all_notes_blueprint.route("/")
 @logged_in
-def default():
-    all_notes = Note.get_by_user_id(session["user_id"])
-    return render_template("allnotes.html", all_notes=all_notes)
+def default(search_results=None):
+    if not search_results:
+        all_notes = Note.get_by_user_id(session["user_id"])
+    else:
+        all_notes = search_results
+    return render_template("allnotes.html", all_notes=all_notes, username=session["username"])
 
 
 @all_notes_blueprint.route("/editnote", methods=["GET", "POST"])
@@ -64,7 +65,13 @@ def update_note():
 
     # back to creating the note document for mongodb
     update_note = Note(
-        user_id=session["user_id"], title=title, notes=notes, location=location, tags=tags, date=date, picture=picture, thumb=thumb
+        user_id=session["user_id"],
+        title=title,
+        notes=notes,
+        location=location,
+        tags=tags,
+        date=date,
+        picture=picture,thumb=thumb
     )
     
     update_note._id = _id
@@ -81,3 +88,25 @@ def delete_note():
     if delete_note:
         delete_note.delete()
     return default()
+
+
+@all_notes_blueprint.route("/searchnotes", methods=["POST"])
+@logged_in
+def search_notes():
+    data = request.form
+    tags = data.get('tag-input-text').split(' ')
+    if tags[0]:
+        tags = ["#" + tag if "#" not in tag else tag for tag in tags]
+    else:
+        tags = []
+    location = data.get('location-input-text')
+    search_date = data.get('date-input-text')
+
+    search_results = Note.get_search_results(tags, location, search_date, session["user_id"])
+
+    return render_template("allnotes.html", 
+                           all_notes=search_results, 
+                           username=session["username"], 
+                           tags=' '.join(tags),
+                           location=location,
+                           search_date=search_date)

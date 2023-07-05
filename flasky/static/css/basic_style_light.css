@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 html {
-    background-color: #f1f1ed;
+    background-color: #ffffff;
     font-family: 'verdana';
     color: #181818;
     font-family: 'Playfair', serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.5;
 }
 
@@ -20,6 +23,7 @@ header, footer {
     color: rgb(44, 107, 44); line-height: 1;
     padding-top: 10px; padding-bottom: 10px;
     border-bottom: 1px solid rgb(44, 107, 44); margin-bottom: 10px;
+    font-family: 'Playfair', serif;
 }
 
 h3 {
@@ -56,6 +60,8 @@ nav {
   background: none;
   max-width: 100%;
   text-align: left;
+  background-color: rgb(184, 230, 252);
+  padding: 8px;
 }
 
 .nav-button {
@@ -70,8 +76,23 @@ nav {
   line-height: 1.5; margin-right: 6px;
 }
 .nav-button:hover {
-  background-color: rgb(44, 107, 44);
-  color: #FFF;
+  background-color: rgb(53, 44, 107) !important;
+  color: #FFF !important;
+  cursor: pointer !important;
+}
+
+#register-button {
+    background-color: rgba(127, 228, 135, 0.8); color: rgb(20, 20, 20);
+}
+#new-note-button {
+    background-color: rgb(241, 231, 135); color: rgb(20, 20, 20);
+}
+#review-button {
+    background-color: rgb(199, 143, 231); color: rgb(20, 20, 20);
+}
+#logout-button {
+    float: right;
+    background-color: rgb(110, 110, 110, 0.5); color: rgb(20, 20, 20);
 }
 
 .small-button {
@@ -89,6 +110,7 @@ nav {
 .small-button:hover {
   background-color: rgb(44, 107, 44);
   color: #FFF;
+  cursor: pointer !important;
 }
 
 main {
@@ -98,7 +120,7 @@ main {
 section {
     position: relative;
     margin-top: 8px;
-    background-color: #dddddd;
+    background-color: #F5F5F5;
     font-size: 16pt;
     color: #1b1b1b;
     padding: 8px;
@@ -203,7 +225,6 @@ section {
 
 #date-input-text {
     padding: 2px;
-    font-family: 'Playfair', serif !important;
     line-height: 1.5;
 }
 

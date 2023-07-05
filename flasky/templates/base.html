@@ -6,7 +6,7 @@
     <title>Plants</title>
     <link rel="stylesheet" href="../static/css/basic_style_light.css">
     <script src="../static/javascript/interactive.js"></script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Playfair:wght@300;400&display=swap');</style>
+    <style></style>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
@@ -15,10 +15,14 @@
 
     <nav>
         {% if new_user %}
-        <a href="{{ url_for('user_blueprint.register') }}" class="nav-button">Register New User 🌟</a>
+        <a href="{{ url_for('user_blueprint.register') }}" class="nav-button" id="register-button">Register</a>
         {% endif %}
-        <a href="{{ url_for('new_note_blueprint.default') }}" class="nav-button">New Note 🆕</a>
-        <a href="{{ url_for('all_notes_blueprint.default') }}" class="nav-button">View All 🎦</a>
+
+        {% if session["username"] %}
+        <a href="{{ url_for('new_note_blueprint.default') }}" class="nav-button" id="new-note-button">New Note</a>
+        <a href="{{ url_for('all_notes_blueprint.default') }}" class="nav-button" id="review-button">View All</a>
+        <a href="{{ url_for('user_blueprint.logout') }}" class="nav-button" id="logout-button">Log Out</a>
+        {% endif %}
     </nav>
 
     <main>
