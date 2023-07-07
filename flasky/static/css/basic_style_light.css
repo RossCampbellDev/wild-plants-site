@@ -66,18 +66,36 @@ nav {
 
 .nav-button {
   display: inline-block;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: rgb(44, 107, 44);
-  background-color: #c7c7c7;
+  padding: 2px 10px;
+  text-decoration: none; text-align: center;
+  color: rgb(0, 0, 0);
+  background-color: #a5e8ec;
   border-radius: 5px;
   font-weight: bold;
   font-size: 24px;
   line-height: 1.5; margin-right: 6px;
+  min-width: 140px; border: none;
 }
 .nav-button:hover {
   background-color: rgb(53, 44, 107) !important;
   color: #FFF !important;
+  cursor: pointer !important;
+}
+.small-button {
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none; text-align: center;
+  color: rgb(0, 0, 0);
+  background-color: #a5e8ec;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.3; margin-right: 6px;
+  min-width: 140px;
+}
+.small-button:hover {
+  background-color: rgb(44, 107, 44);
+  color: #FFF;
   cursor: pointer !important;
 }
 
@@ -93,24 +111,6 @@ nav {
 #logout-button {
     float: right;
     background-color: rgb(110, 110, 110, 0.5); color: rgb(20, 20, 20);
-}
-
-.small-button {
-  display: inline-block;
-  padding: 5px 10px;
-  text-decoration: none;
-  color: rgb(44, 107, 44);
-  background-color: #c7c7c7;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 1.3; margin-right: 6px;
-  min-width: 80px;
-}
-.small-button:hover {
-  background-color: rgb(44, 107, 44);
-  color: #FFF;
-  cursor: pointer !important;
 }
 
 main {

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, session, url_for, redirect
 from flasky import logged_in
 from flasky.note_model import Note
 from werkzeug.utils import secure_filename
@@ -54,5 +54,6 @@ def new_note():
 
     new_note.update()
 
-    return render_template("new_note/submitnewnote.html", new_note=new_note)
+    #return render_template("review/submitnewnote.html", new_note=new_note)
+    return redirect(url_for("all_notes_blueprint.default"))
 

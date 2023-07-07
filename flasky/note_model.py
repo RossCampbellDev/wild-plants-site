@@ -144,9 +144,11 @@ class Note:
 
     def delete(self):
         # TODO: better file paths?
-        if os.path.exists("flasky/static/images/photos/"+self.picture):
-            os.remove("flasky/static/images/photos/"+self.picture)
-        if os.path.exists("flasky/static/images/thumbnails/"+self.thumb):
-            os.remove("flasky/static/images/thumbnails/"+self.thumb)
+        if self.picture:
+            if os.path.exists("flasky/static/images/photos/"+self.picture):
+                os.remove("flasky/static/images/photos/"+self.picture)
+        if self.thumb:
+            if os.path.exists("flasky/static/images/thumbnails/"+self.thumb):
+                os.remove("flasky/static/images/thumbnails/"+self.thumb)
 
         return wild_plants_collection.delete_one({'_id': ObjectId(self._id)})
