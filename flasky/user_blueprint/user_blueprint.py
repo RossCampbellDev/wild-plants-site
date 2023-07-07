@@ -26,7 +26,7 @@ def login():
             session["logged_in"] = True
         return redirect("/review", code=302)
     
-    return redirect("/login", code=302)
+    return redirect("login", code=302)
 
 
 # LOGOUT
@@ -51,4 +51,4 @@ def register():
     passhash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     new_user = User(username=username, passhash=passhash)
     new_user.save()
-    return redirect("/login", code=302)
+    return redirect("login", code=302)

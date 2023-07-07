@@ -1,5 +1,5 @@
 function minimise(who) {
-    var blockElement = who.parentNode.children[1];
+    var blockElement = document.getElementById(who);//who.parentNode.children[1];
     if (blockElement.style.display === "none") {
         who.textContent = "[-]";
         blockElement.style.display = "block";

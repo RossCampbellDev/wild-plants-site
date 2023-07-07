@@ -6,11 +6,8 @@
             <input type="hidden" name="id-input-text" id="id-input-text" value="{{edit_note._id}}" />
             <div class="section-control" onClick="minimise(this)">[-]</div>
             <div class="big-block">
-                <div class="block-title">
-                    <!--Edit Note (title text)-->
-                    <input type="submit" name="save-note" value="Update Note" class="nav-button" />
-                    <button type="button" class="nav-button" onclick="deleteNote()">Delete Note</button>
-                </div>
+                <div class="block-title"><h2>Edit Note</h2></div>
+                <!--<div class="block-title"></div>-->
 
                 <div class="big-block-floater">
                     <!-- text inputs -->
@@ -59,12 +56,15 @@
                     </div>
 
                     <!-- upload a pic -->
-                        <div style="float:right; padding-left: 20px; vertical-align: top; z-index: 0;">
-                                <label class="label-text" for="picture-input-text">Photo:</label>
-                                <input type="file" name="picture-input-file" value="{{edit_note.picture}}"  /><br/>
-                                <img src="{{ url_for('static', filename="images/photos/" + edit_note.picture) }}" width="500" />
-                        </div>
+                    <div style="float:right; padding-left: 20px; vertical-align: top; z-index: 0;">
+                            <label class="label-text" for="picture-input-text">Photo:</label>
+                            <input type="file" name="picture-input-file" value="{{edit_note.picture}}"  /><br/>
+                            <img src="{{ url_for('static', filename="images/photos/" + edit_note.picture) }}" width="500" />
+                    </div>
                 </div>
+                <!--Edit Note (title text)-->
+                <input type="submit" name="save-note" value="Update Note" class="nav-button" />
+                <button type="button" class="nav-button" onclick="deleteNote()">Delete Note</button>
             </div>
         </form>
     </section>

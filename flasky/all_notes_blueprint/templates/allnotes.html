@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block mainbody %}
     <section>
-        <div class="section-control" onClick="minimise(this)">[-]</div>
+        <div class="section-control" onClick="minimise('search-block')">[-]</div>
 
         <!-- search/filter section -->
         <div class="big-block">
-            <h2>Welcome back {{ username }}</h2>
+            <div class="block-title"><h2>Welcome back {{ username }}</h2></div>
             <div id="search-block">
                 <form method="post" action="/review/searchnotes" id="search-notes-form">
                     <!-- Tag -->
