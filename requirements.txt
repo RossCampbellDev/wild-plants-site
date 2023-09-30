@@ -6,4 +6,3 @@ pymongo==4.3.3
 dnspython==2.3.0
 Pillow==9.5.0
 python-dotenv
-dnspython

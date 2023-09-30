@@ -110,4 +110,9 @@ use wild-plants
 db.createUser({user:"radaghast", pwd:<PASS>, roles: [{ role:"readWrite", db:"wild-plants"}]})
 ```
 
+## connectivity - app server to db server
+running mongodb container with persistent storage - IP on this host is 172.17.0.2:27017
+the app container is running on 172.17.0.3 and they communicate between each other
+in future will need to do port forwarding on NAT when they are running on separate machines
+
 ⭕ but in app i am using the global root credentials to get permission on mongo in general.  not using radaghast at present
