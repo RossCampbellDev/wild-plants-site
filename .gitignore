@@ -5,3 +5,5 @@
 /venv/
 /flasky/static/images/photos/
 /flasky/static/images/thumbnails/
+docker-run.sh
+docker-compose.yml

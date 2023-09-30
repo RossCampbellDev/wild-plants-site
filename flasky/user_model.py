@@ -1,18 +1,18 @@
 import datetime
-from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 from bson.objectid import ObjectId
+from flasky.extensions import db
 
 import bcrypt
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
-MONGO_CONN_STRING = os.environ.get('MONGO_CONN_STRING')
+# import os
+# from dotenv import load_dotenv
+# load_dotenv()
+# MONGO_CONN_STRING = os.environ.get('MONGO_CONN_STRING')
 
 
-client = MongoClient(MONGO_CONN_STRING)
-db = client["wild-plants"]
+# client = MongoClient(MONGO_CONN_STRING)
+# db = client["wild-plants"]
 user_collection = db["user-collection"]
 
 class User:

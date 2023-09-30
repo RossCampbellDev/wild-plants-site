@@ -87,3 +87,27 @@
 ✅ filter(s) on review all screen
 
 ⭕ ordering results on review all
+
+## CI/CD
+```
+sudo docker create volume mongo-plants-volume
+
+sudo docker run -d -p27017:27017 \
+--name=mongo-plants \
+-e MONGO_INITDB_ROOT_USERNAME=root \
+-e MONGO_INITDB_ROOT_PASSWORD=<PASS> \
+-e MONGO_INITDB_DATABASE=wild-plants \
+--restart always \
+-v mongo-plants-volume:/data/db \
+mongo:latest
+```
+
+to access the shell while running and set up user permissions:
+'''
+sudo docker exec -it mongo-plants mongosh
+db.auth("root")
+use wild-plants
+db.createUser({user:"radaghast", pwd:<PASS>, roles: [{ role:"readWrite", db:"wild-plants"}]})
+```
+
+⭕ but in app i am using the global root credentials to get permission on mongo in general.  not using radaghast at present

@@ -11,7 +11,9 @@
 </head>
 <body>
     <!-- <img src="{{ url_for('static', filename='images/logo-small.png') }}" class="logo" /> -->
-    <header>Wild Plants!</header>
+    <header>
+        <a href="{{ url_for('all_notes_blueprint.default') }}" style="text-decoration: none; color: inherit;">Wild Plants!</a>
+    </header>
 
     <nav>
         {% if new_user %}
