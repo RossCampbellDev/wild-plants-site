@@ -110,6 +110,10 @@ use wild-plants
 db.createUser({user:"radaghast", pwd:<PASS>, roles: [{ role:"readWrite", db:"wild-plants"}]})
 ```
 
+Push to docker hub
+`sudo docker tag wild-plants manfrombritain/wild-plants:latest`
+`sudo docker push manfrombritain/wild-plants:latest`
+
 ## connectivity - app server to db server
 running mongodb container with persistent storage - IP on this host is 172.17.0.2:27017
 the app container is running on 172.17.0.3 and they communicate between each other
