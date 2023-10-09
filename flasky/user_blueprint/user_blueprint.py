@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, session
 from flasky.user_model import User
-import bcrypt
+# import bcrypt
+from passlib.hash import pbkdf2_sha256
 
 
 # name of the blueprint, __name__, path to our static folder and templates folder
@@ -48,7 +49,8 @@ def register():
     data = request.form
     username = data.get("username-input-text")
     password = data.get("password-input-text")
-    passhash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    # passhash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    passhash = hash = pbkdf2_sha256.hash(password.encode('utf-8'), rounds=20000, salt_size=16)
     new_user = User(username=username, passhash=passhash)
     new_user.save()
     return redirect("login", code=302)

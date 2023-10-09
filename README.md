@@ -112,7 +112,7 @@ db.createUser({user:"radaghast", pwd:<PASS>, roles: [{ role:"readWrite", db:"wil
 
 Push to docker hub
 `sudo docker tag wild-plants manfrombritain/wild-plants:latest`
-`sudo docker push manfrombritain/wild-plants:latest`
+`sudo docker push manfrombritain/wild-plants:latestdoc  `
 
 ## connectivity - app server to db server
 running mongodb container with persistent storage - IP on this host is 172.17.0.2:27017

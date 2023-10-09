@@ -3,7 +3,8 @@ from pymongo.errors import PyMongoError
 from bson.objectid import ObjectId
 from flasky.extensions import db
 
-import bcrypt
+# import bcrypt
+from passlib.hash import pbkdf2_sha256
 
 # import os
 # from dotenv import load_dotenv
@@ -88,5 +89,6 @@ class User:
     def check_pass(test_username, test_password):
         user = User.get_by_username(test_username)
         if user:
-            return bcrypt.checkpw(test_password.encode('utf-8'), user["passhash"])
+            # return bcrypt.checkpw(test_password.encode('utf-8'), user["passhash"])
+            return pbkdf2_sha256.verify(test_password.encode('utf-8'), user["passhash"])
         return False
